@@ -1,0 +1,120 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package zulu;
+import java.awt.Color;
+import java.awt.Container;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.DriverManager;
+import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import java.sql.*;
+
+//Author is Tevin Kinuthia
+
+public class Zulu extends JFrame {
+      //use of the container method
+      Container container =getContentPane();
+      JLabel usernamelabel=new JLabel("Username");
+      JTextField username= new JTextField();
+      JLabel passwordLabel= new JLabel("Password");
+      JPasswordField password= new JPasswordField();
+      JButton login=new JButton("Login");
+      JButton cancel= new JButton("cancel");
+      
+     
+      
+     
+      public final static String user="you";
+      static final String pass="you";
+              
+     
+      
+     
+
+
+
+//creation of a constructor
+    public Zulu(){
+    
+    setLayoutManager();
+    addComponentsToContainer();
+    setLocationAndSize();
+   
+      ButtonHandler handler= new ButtonHandler();
+      login.addActionListener(handler);
+     
+      
+    }
+    
+    public void setLayoutManager(){
+      container.setLayout(null);
+    }
+    public void setLoactionAndSize(){
+    }
+    public void addComponentsToContainer(){
+    //adding components to conatainer
+     container.add(usernamelabel);
+      container.add(username);
+      container.add(passwordLabel);
+      container.add(password);
+      container.add(login);
+      container.add(cancel);
+      
+   }
+    
+    public void setLocationAndSize(){
+    usernamelabel.setBounds(50,150,100,30);
+    username.setBounds(150,150,150,30);
+    passwordLabel.setBounds(50,220,100,30);
+    password.setBounds(150,220,150,30);
+    login.setBounds(50,300,100,30);
+    cancel.setBounds(200,300,100,30);
+    
+    
+    }
+    
+   
+       
+   
+    
+
+    public static void main(String[] args) {
+      //initializing the frame and panels
+      Zulu zulu1= new Zulu();
+      zulu1.setTitle("Zulu log in");
+      zulu1.setVisible(true);
+      zulu1.setBounds(10,10,370,600);
+      zulu1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      zulu1.setResizable(false);
+    }
+    private class ButtonHandler implements ActionListener{
+        public void actionPerformed(ActionEvent event){
+        String msg;
+        if( user.equals("you") && pass.equals("you")){
+        msg="Login Sucessful";
+        JOptionPane.showMessageDialog(null,msg);
+        
+       
+        }else{
+        msg="You have entered an invalid username and password";
+        JOptionPane.showMessageDialog(null,msg);
+        }
+         new analytics().setVisible(true);
+        
+        
+        }
+    }
+    
+}
+
